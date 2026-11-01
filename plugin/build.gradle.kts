@@ -7,7 +7,7 @@ base {
 }
 
 lavalinkPlugin {
-	name = "lavasrc-plugin"
+	name = "lavaconst-plugin"
 	apiVersion = "4.0.0"
 	serverVersion = "4.0.5"
 	configurePublishing = false
