@@ -32,4 +32,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: LavaSrc-Plugin
-          path: plugin/build/libs/lavasrc-plugin-*.jar
+          path: plugin/build/libs/lavaconst-plugin-*.jar
