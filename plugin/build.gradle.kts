@@ -3,7 +3,7 @@ plugins {
 }
 
 base {
-	archivesName = "lavasrc-plugin"
+	archivesName = "lavaconst-plugin"
 }
 
 lavalinkPlugin {
