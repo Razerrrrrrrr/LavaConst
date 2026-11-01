@@ -53,10 +53,28 @@ public abstract class MirroringAudioTrack extends ExtendedAudioTrack {
 			((InternalAudioTrack) track).setUserData(this.getUserData());
 			var internalTrack = (InternalAudioTrack) track;
 			log.debug("Loaded track mirror from {} {}({}) ", internalTrack.getSourceManager().getSourceName(), internalTrack.getInfo().title, internalTrack.getInfo().uri);
-			processDelegate(internalTrack, executor);
+			try {
+				processDelegate(internalTrack, executor);
+			} catch (Exception e) {
+				// A mirror that fails to play should not be reused from the cache. Skipping a track is not a failure.
+				if (!Thread.currentThread().isInterrupted() && !isInterruption(e)) {
+					this.sourceManager.getResolver().onPlaybackFailed(this);
+				}
+				throw e;
+			}
 			return;
 		}
 		throw new TrackNotFoundException("No mirror found for track");
+	}
+
+	private static boolean isInterruption(Throwable throwable) {
+		for (var depth = 0; throwable != null && depth < 10; depth++) {
+			if (throwable instanceof InterruptedException) {
+				return true;
+			}
+			throwable = throwable.getCause();
+		}
+		return false;
 	}
 
 	@Override
