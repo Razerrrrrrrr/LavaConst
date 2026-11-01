@@ -5,7 +5,7 @@ plugins {
 }
 
 base {
-    archivesName = "lavasrc"
+    archivesName = "LavaConst"
 }
 
 java {
