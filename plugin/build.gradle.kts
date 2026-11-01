@@ -8,22 +8,21 @@ base {
 
 lavalinkPlugin {
 	name = "lavaconst-plugin"
-	apiVersion = "4.0.0"
-	serverVersion = "4.0.5"
+	apiVersion = "4.2.0"
+	serverVersion = "4.2.2"
 	configurePublishing = false
 }
-
-
 
 dependencies {
 	implementation(project(":main"))
 	implementation(project(":protocol"))
+	implementation("dev.arbjerg:lavaplayer:2.2.6")
+
 	compileOnly("dev.lavalink.youtube:common:1.1.0")
 	compileOnly("com.github.topi314.lavasearch:lavasearch:1.0.0")
 	implementation("com.github.topi314.lavasearch:lavasearch-plugin-api:1.0.0")
 	implementation("com.github.topi314.lavalyrics:lavalyrics-plugin-api:1.0.0")
 
-	// Copy lyrics.kt from main
 	project.project(":main").configurations["implementation"].dependencies.forEach {
 		if (it.group == "dev.schlaubi.lyrics") {
 			add("implementation", it)
