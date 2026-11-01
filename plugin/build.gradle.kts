@@ -16,7 +16,7 @@ lavalinkPlugin {
 dependencies {
 	implementation(project(":main"))
 	implementation(project(":protocol"))
-	implementation("dev.arbjerg:lavaplayer:2.2.6")
+	implementation("dev.arbjerg:lavaplayer:2.2.2")
 
 	compileOnly("dev.lavalink.youtube:common:1.1.0")
 	compileOnly("com.github.topi314.lavasearch:lavasearch:1.0.0")
